@@ -4,8 +4,8 @@ import './SearchBar.css';
 
 class SearchBar extends React.Component{
   constructor(props){
-    super(props);
-    this.state={
+    super(props)
+    this.state = {
       term:'',
       location:'',
       sortBy:'best_match'
@@ -22,7 +22,7 @@ class SearchBar extends React.Component{
     }
   }
   getSortByClass (sortByOption){
-    if(this.sortBy===sortByOption){
+    if(this.state.sortBy===sortByOption){
       return 'active';
     }
     return '';
@@ -37,7 +37,10 @@ handleLocationChange(event){
   this.setState({location:event.target.value})
 }
 handleSearch(event){
-  this.props.searchYelp(this.term,this.location,this.sortBy);
+  this.props.searchYelp(
+    this.state.term,
+    this.state.location,
+    this.state.sortBy);
   event.preventDefault();
 }
 
